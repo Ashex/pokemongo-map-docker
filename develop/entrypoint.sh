@@ -116,7 +116,7 @@ fi
 if [ -d ".git" ]; then
     git pull origin develop
     pip install -r requirements.txt
-    npm install
+    npm update
     grunt jshint sass cssmin uglify
     python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --google-maps-key "$GMAPS_KEY"
 
@@ -125,7 +125,7 @@ else
     git remote add origin https://github.com/AHAAAAAAA/PokemonGo-Map.git
     git pull origin develop
     pip install -r requirements.txt
-    npm install
+    npm update
     grunt jshint sass cssmin uglify
     python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --google-maps-key "$GMAPS_KEY"
 fi

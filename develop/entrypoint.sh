@@ -58,6 +58,10 @@ do
 	  DISPLAY_GYMS="TRUE"
 	  shift 1
 	  ;;
+      -ns | --no-server)
+	  NO_SERVER="TRUE"
+	  shift 1
+	  ;;
       --) # End of all options
 	  shift
 	  break
@@ -108,6 +112,10 @@ fi
 
 if [[ -n "$DISPLAY_GYMS" ]]; then
    ARGUMENTS="$ARGUMENTS --display-gyms"
+fi
+
+if [[ -n "$NO_SERVER" ]]; then
+   ARGUMENTS="$ARGUMENTS --no-server"
 fi
 
 

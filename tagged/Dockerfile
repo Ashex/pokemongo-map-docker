@@ -22,17 +22,18 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY package.json /usr/src/app/
 
+RUN npm install && apk del python-dev py-pip
+
+COPY . /usr/src/app/
+
 RUN npm install -g grunt \
-    && npm install \
     && grunt jshint sass cssmin uglify \
     && npm remove -g grunt \
     && npm cache clean \
     && rm -rf node_modules \
-    && rm -rf /tmp/* \
 
 # Keeping this separate because docker cache might get weird with cleanup happening in the same RUN command
-RUN apk del build-base python-dev py-pip
+RUN apk del build-base && rm -rf /tmp/*
 
-COPY . /usr/src/app
 
 ENTRYPOINT ["/usr/bin/python", "runserver.py"]

@@ -38,7 +38,7 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --display-gyms  | DISPLAY_GYMS  |
 
 
-This list contains all flags for both master and develop, make sure you're aware what flags are supported on each as the tool will fail to run if you add an extra flag.
+This list contains all flags for both master and develop, make sure you're aware what flags are supported on each as the tool will fail to run if you add an unsupported flag.
 
 ### Example
 `docker run -d -P --name pokemongo-map ashex/pokemongo-map:develop -a -e "AUTH_SERVICE=ptc" -e "USERNAME=UserName" -e "PASSWORD=Password" -E "LOCATION=Seattle, WA" -e "STEP_LIMIT=5" -e "GMAPS_KEY=SUPERSECRET"`
@@ -48,7 +48,7 @@ For the master branch you can change the API keys in credentials.json by passing
 
 ### Example:
 
-`docker run -d -P -e "POKEMON_gmaps_key=SUPERSECRET" --name pokemongo-map ashex/pokemongo-map -a ptc -u UserName -p Password -l "Seattle, WA" -st 5`
+`docker run -d -P -e "POKEMON_gmaps_key=SUPERSECRET" --name pokemongo-map ashex/pokemongo-map:master -a ptc -u UserName -p Password -l "Seattle, WA" -st 5`
 
 
 **A rewrite is in progress, if you wish to try out the new code use the develop tag**

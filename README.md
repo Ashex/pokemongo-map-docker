@@ -37,6 +37,7 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --display-lured  | DISPLAY_LURED  |
 | --display-gyms  | DISPLAY_GYMS  |
 | --no-server  | NO_SERVER  |
+| --cors  | CORS  |
 
 This list contains all flags for both master and develop, make sure you're aware what flags are supported on each as the tool will fail to run if you add an unsupported flag.
 

@@ -62,6 +62,10 @@ do
 	  NO_SERVER="TRUE"
 	  shift 1
 	  ;;
+      -C | --cors)
+	  CORS="TRUE"
+	  shift 1
+	  ;;
       --) # End of all options
 	  shift
 	  break
@@ -118,6 +122,9 @@ if [[ -n "$NO_SERVER" ]]; then
    ARGUMENTS="$ARGUMENTS --no-server"
 fi
 
+if [[ -n "$CORS" ]]; then
+   ARGUMENTS="$ARGUMENTS --cors"
+fi
 
 # If the repo has already been created, pull the latest changes
 # Otherwise create and clone the repo

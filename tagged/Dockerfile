@@ -36,4 +36,4 @@ RUN npm install -g grunt \
 RUN apk del build-base && rm -rf /tmp/*
 
 
-ENTRYPOINT ["/usr/bin/python", "runserver.py"]
+ENTRYPOINT ["/bin/sh", "entrypoint.sh"]

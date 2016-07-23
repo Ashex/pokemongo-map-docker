@@ -14,7 +14,7 @@ This will pull the latest code from the repository on start. Any restarts of the
 
 For the latest *features* use the develop tag. 
 
-Currently the project isn't making tagged releases, rather merging to master (most recent being 2.0). There will be a tagged image for each pseudo-release (most recent being 2.0), latest pointing to the most recent however they're still pushing small changes to master, as such master will sometimes have fixes missing from latest. 
+Currently the project isn't making tagged releases, rather merging to master. There will be a tagged image for each pseudo-release (most recent being 2.0), latest pointing to the most recent however they're still pushing small changes to master, as such master will sometimes have fixes missing from latest. 
 
 Latest is a built static image while master/develop are dynamic, pulling in changes from the repository.
 

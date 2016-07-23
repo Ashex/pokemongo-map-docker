@@ -46,16 +46,16 @@ do
 	  GMAPS_KEY="$2"
 	  shift 2
 	  ;;
-      -dp | --display-pokestops)
-	  DISPLAY_POKESTOPS="TRUE"
+      -nk | --no-pokestops)
+	  NO_POKESTOPS="TRUE"
 	  shift 1
 	  ;;
-      -dl | --display-lured)
-	  DISPLAY_LURED="TRUE"
+      -np | --no-pokemon)
+	  NO_POKEMON="TRUE"
 	  shift 1
 	  ;;
-      -dg | --display-gyms)
-	  DISPLAY_GYMS="TRUE"
+      -ng | --no-gyms)
+	  NO_GYMS="TRUE"
 	  shift 1
 	  ;;
       -ns | --no-server)
@@ -65,6 +65,9 @@ do
       -C | --cors)
 	  CORS="TRUE"
 	  shift 1
+      -t | --threads)
+	  THREADS="$2"
+	  shift 2
 	  ;;
       --) # End of all options
 	  shift
@@ -106,16 +109,16 @@ if [[ -n "$AUTO_REFRESH" ]]; then
    ARGUMENTS="$ARGUMENTS --auto_refresh $AUTO_REFRESH"
 fi
 
-if [[ -n "$DISPLAY_POKESTOPS" ]]; then
-   ARGUMENTS="$ARGUMENTS --display-pokestops"
+if [[ -n "$NO_POKESTOPS" ]]; then
+   ARGUMENTS="$ARGUMENTS --no-pokestops"
 fi
 
-if [[ -n "$DISPLAY_LURED" ]]; then
-   ARGUMENTS="$ARGUMENTS --display-lured"
+if [[ -n "$NO_POKEMON" ]]; then
+   ARGUMENTS="$ARGUMENTS --no-pokemon"
 fi
 
-if [[ -n "$DISPLAY_GYMS" ]]; then
-   ARGUMENTS="$ARGUMENTS --display-gyms"
+if [[ -n "$NO_GYMS" ]]; then
+   ARGUMENTS="$ARGUMENTS --no-gyms"
 fi
 
 if [[ -n "$NO_SERVER" ]]; then
@@ -124,6 +127,10 @@ fi
 
 if [[ -n "$CORS" ]]; then
    ARGUMENTS="$ARGUMENTS --cors"
+fi
+
+if [[ -n "$THREADS" ]]; then
+   ARGUMENTS="$ARGUMENTS --threads $THREADS"
 fi
 
 # If the repo has already been created, pull the latest changes

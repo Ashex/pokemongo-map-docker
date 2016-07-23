@@ -129,7 +129,7 @@ fi
 # If the repo has already been created, pull the latest changes
 # Otherwise create and clone the repo
 if [ -d ".git" ]; then
-    git pull origin develop
+    git pull origin master
     pip install -r requirements.txt
     npm update
     grunt jshint sass cssmin uglify
@@ -138,7 +138,7 @@ if [ -d ".git" ]; then
 else
     git init
     git remote add origin https://github.com/AHAAAAAAA/PokemonGo-Map.git
-    git pull origin develop
+    git pull origin master
     pip install -r requirements.txt
     npm install
     grunt jshint sass cssmin uglify

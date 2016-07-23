@@ -6,7 +6,7 @@
 while :
 do
     case "$1" in
-      -a | --auth_service)
+      -a | --auth-service)
 	  AUTH_SERVICE="$2"  
 	  shift 2
 	  ;;
@@ -58,6 +58,14 @@ do
 	  DISPLAY_GYMS="TRUE"
 	  shift 1
 	  ;;
+      -ns | --no-server)
+	  NO_SERVER="TRUE"
+	  shift 1
+	  ;;
+      -C | --cors)
+	  CORS="TRUE"
+	  shift 1
+	  ;;
       --) # End of all options
 	  shift
 	  break
@@ -82,8 +90,8 @@ if [[ -z "$STEP_LIMIT" ]]; then
 fi
 
 # Store all arguments in a variable so we can extend it with optional ones
-# We pass location separately because sh kept expanding on the space even when wrapped in quotes
-ARGUMENTS="--auth_service $AUTH_SERVICE --username $USERNAME --password $PASSWORD --st $STEP_LIMIT --locale $LOCALE"
+# We pass location and api key separately because sh kept expanding even when wrapped in quotes
+ARGUMENTS="--auth-service $AUTH_SERVICE --username $USERNAME --password $PASSWORD --st $STEP_LIMIT --locale $LOCALE"
 
 # Add optional arguments
 if [[ -n "$IGNORE" ]]; then
@@ -98,10 +106,6 @@ if [[ -n "$AUTO_REFRESH" ]]; then
    ARGUMENTS="$ARGUMENTS --auto_refresh $AUTO_REFRESH"
 fi
 
-if [[ -n "$GMAPS_KEY" ]]; then
-   ARGUMENTS="$ARGUMENTS --google-maps-key $GMAPS_KEY"
-fi
-
 if [[ -n "$DISPLAY_POKESTOPS" ]]; then
    ARGUMENTS="$ARGUMENTS --display-pokestops"
 fi
@@ -114,46 +118,31 @@ if [[ -n "$DISPLAY_GYMS" ]]; then
    ARGUMENTS="$ARGUMENTS --display-gyms"
 fi
 
-change_api_keys () 
-{
-# Change the API keys in credentials.json 
-# If a variable with the value is provided
-    for VAR in `env`
-    do
-      case "$VAR" in
-          POKEMON_* )
-        key_name=`echo "$VAR" | sed -e "s/^POKEMON_\(.*\)\=.*/\1/"`
-        echo "Changing value of " $key_name
-        key_value=`echo "$VAR" | sed -e "s/.*=\(.*\)/\1/"`
-        cat credentials.json |
-            jq "to_entries |
-                 map(if .key == \"$key_name\"
-                    then . + {\"value\":\"$key_value\"}
-                    else .
-                    end
-                   ) |
-                from_entries" > modified_credentials.json
-        mv modified_credentials.json credentials.json
-        ;;
-        esac
-    done
-}
+if [[ -n "$NO_SERVER" ]]; then
+   ARGUMENTS="$ARGUMENTS --no-server"
+fi
 
-# If the repo has already been cloned, pull the latest changes
-# Otherwise just clone the repo
-if [ -d "PokemonGo-Map" ]; then
-    cd PokemonGo-Map
-    git pull
+if [[ -n "$CORS" ]]; then
+   ARGUMENTS="$ARGUMENTS --cors"
+fi
+
+# If the repo has already been created, pull the latest changes
+# Otherwise create and clone the repo
+if [ -d ".git" ]; then
+    git pull origin develop
     pip install -r requirements.txt
-    change_api_keys
-    python example.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION"
+    npm update
+    grunt jshint sass cssmin uglify
+    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --google-maps-key "$GMAPS_KEY"
 
 else
-    git clone https://github.com/AHAAAAAAA/PokemonGo-Map.git
-    cd PokemonGo-Map
+    git init
+    git remote add origin https://github.com/AHAAAAAAA/PokemonGo-Map.git
+    git pull origin develop
     pip install -r requirements.txt
-    change_api_keys
-    python example.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION"
+    npm install
+    grunt jshint sass cssmin uglify
+    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --google-maps-key "$GMAPS_KEY"
 fi
 
 

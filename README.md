@@ -44,6 +44,7 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --no-server  | NO_SERVER  |
 | --cors  | CORS  |
 | --threads | THREADS |
+| --fixed-location | FIXED_LOCATION |
 
 This list contains all flags for both master and develop, make sure you're aware what flags are supported on branch (since develop tends to get new flags regularly) as the tool will fail to run if you add an unsupported flag.
 

@@ -73,6 +73,10 @@ do
 	  shift
 	  break
       ;;
+      -fl | --fixed-location)
+	  FIXED_LOCATION="TRUE"
+	  shift 1
+	  ;;
       -*)
 	  echo "Error: Unknown option: $1" >&2
 	  exit 1
@@ -131,6 +135,10 @@ fi
 
 if [[ -n "$THREADS" ]]; then
    ARGUMENTS="$ARGUMENTS --threads $THREADS"
+fi
+
+if [[ -n "$FIXED_LOCATION" ]]; then
+   ARGUMENTS="$ARGUMENTS --fixed-location"
 fi
 
 # If the repo has already been created, pull the latest changes

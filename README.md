@@ -38,9 +38,9 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --locale  | LOCALE  |
 | --auto_refresh  | AUTO_REFRESH  |
 | --google-maps-key  | GMAPS_KEY  |
-| --display-pokestops  | DISPLAY_POKESTOPS  |
-| --display-lured  | DISPLAY_LURED  |
-| --display-gyms  | DISPLAY_GYMS  |
+| --no-pokestops  | NO_POKESTOPS  |
+| --no-pokemon  | NO_POKEMON  |
+| --no-gyms  | NO_GYMS  |
 | --no-server  | NO_SERVER  |
 | --cors  | CORS  |
 

@@ -10,8 +10,13 @@ This will pull the latest code from the repository on start. Any restarts of the
 
 * ashex/pokemongo-map:develop - Pulls the develop branch
 * ashex/pokemongo-map:master - Pulls from the master branch
+* ashex/pokemongo-map:latest - Most recent release
 
-Latest points to the master branch. For the latest features use the develop tag.
+For the latest *features* use the develop tag. 
+
+Currently the project isn't making tagged releases, rather merging to master (most recent being 2.0). There will be a tagged image for each pseudo-release (most recent being 2.0), latest pointing to the most recent however they're still pushing small changes to master, as such master will sometimes have fixes missing from latest. 
+
+Latest is a built static image while master/develop are dynamic, pulling in changes from the repository.
 
 
 ## Usage:
@@ -39,18 +44,11 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --no-server  | NO_SERVER  |
 | --cors  | CORS  |
 
-This list contains all flags for both master and develop, make sure you're aware what flags are supported on each as the tool will fail to run if you add an unsupported flag.
+This list contains all flags for both master and develop, make sure you're aware what flags are supported on branch (since develop tends to get new flags regularly) as the tool will fail to run if you add an unsupported flag.
+
 
 ### Example
-`docker run -d -P --name pokemongo-map ashex/pokemongo-map:develop -a -e "AUTH_SERVICE=ptc" -e "USERNAME=UserName" -e "PASSWORD=Password" -E "LOCATION=Seattle, WA" -e "STEP_LIMIT=5" -e "GMAPS_KEY=SUPERSECRET"`
+`docker run -d -P --name pokemongo-map ashex/pokemongo-map -a -e "AUTH_SERVICE=ptc" -e "USERNAME=UserName" -e "PASSWORD=Password" -E "LOCATION=Seattle, WA" -e "STEP_LIMIT=5" -e "GMAPS_KEY=SUPERSECRET"`
 
 
-For the master branch you can change the API keys in credentials.json by passing an environmental variable with the value, it must start with POKEMON_ in order to be applied. 
-
-### Example:
-
-`docker run -d -P -e "POKEMON_gmaps_key=SUPERSECRET" --name pokemongo-map ashex/pokemongo-map:master -a ptc -u UserName -p Password -l "Seattle, WA" -st 5`
-
-
-**A rewrite is in progress, if you wish to try out the new code use the develop tag**
 

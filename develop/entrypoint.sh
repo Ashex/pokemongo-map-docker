@@ -65,6 +65,7 @@ do
       -C | --cors)
 	  CORS="TRUE"
 	  shift 1
+	  ;;
       -t | --threads)
 	  THREADS="$2"
 	  shift 2

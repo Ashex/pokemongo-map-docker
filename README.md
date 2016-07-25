@@ -33,10 +33,7 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --password  | PASSWORD  |
 | --location  | LOCATION  |
 | --step-limit  | STEP_LIMIT  |
-| --ignore  | IGNORE  |
-| --only  | ONLY  |
 | --locale  | LOCALE  |
-| --auto_refresh  | AUTO_REFRESH  |
 | --google-maps-key  | GMAPS_KEY  |
 | --no-pokestops  | NO_POKESTOPS  |
 | --no-pokemon  | NO_POKEMON  |
@@ -45,6 +42,8 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --cors  | CORS  |
 | --threads | THREADS |
 | --fixed-location | FIXED_LOCATION |
+| --scan-delay | SCAN_DELAY |
+| --db | DATABASE |
 
 This list contains all flags for both master and develop, make sure you're aware what flags are supported on branch (since develop tends to get new flags regularly) as the tool will fail to run if you add an unsupported flag.
 

@@ -46,18 +46,6 @@ do
 	  GMAPS_KEY="$2"
 	  shift 2
 	  ;;
-      -dp | --display-pokestops)
-	  DISPLAY_POKESTOPS="TRUE"
-	  shift 1
-	  ;;
-      -dl | --display-lured)
-	  DISPLAY_LURED="TRUE"
-	  shift 1
-	  ;;
-      -dg | --display-gyms)
-	  DISPLAY_GYMS="TRUE"
-	  shift 1
-	  ;;
       -ns | --no-server)
 	  NO_SERVER="TRUE"
 	  shift 1
@@ -65,7 +53,15 @@ do
       -C | --cors)
 	  CORS="TRUE"
 	  shift 1
+          ;;
+      -t | --threads)
+	  THREADS="$2"
+	  shift 2
 	  ;;
+      --) # End of all options
+	  shift
+	  break
+      ;;
       -fl | --fixed-location)
 	  FIXED_LOCATION="TRUE"
 	  shift 1
@@ -75,10 +71,6 @@ do
       ;;
       -d | --db)
       DATABASE="$2"
-      ;;
-      --) # End of all options
-	  shift
-	  break
       ;;
       -*)
 	  echo "Error: Unknown option: $1" >&2
@@ -112,22 +104,6 @@ if [[ -n "$ONLY" ]]; then
    ARGUMENTS="$ARGUMENTS --only $ONLY"
 fi
 
-if [[ -n "$AUTO_REFRESH" ]]; then
-   ARGUMENTS="$ARGUMENTS --auto_refresh $AUTO_REFRESH"
-fi
-
-if [[ -n "$DISPLAY_POKESTOPS" ]]; then
-   ARGUMENTS="$ARGUMENTS --display-pokestops"
-fi
-
-if [[ -n "$DISPLAY_LURED" ]]; then
-   ARGUMENTS="$ARGUMENTS --display-lured"
-fi
-
-if [[ -n "$DISPLAY_GYMS" ]]; then
-   ARGUMENTS="$ARGUMENTS --display-gyms"
-fi
-
 if [[ -n "$NO_SERVER" ]]; then
    ARGUMENTS="$ARGUMENTS --no-server"
 fi
@@ -136,16 +112,20 @@ if [[ -n "$CORS" ]]; then
    ARGUMENTS="$ARGUMENTS --cors"
 fi
 
+if [[ -n "$THREADS" ]]; then
+   ARGUMENTS="$ARGUMENTS --threads $THREADS"
+fi
+
+if [[ -n "$FIXED_LOCATION" ]]; then
+   ARGUMENTS="$ARGUMENTS --fixed-location"
+fi
+
 if [[ -n "$SCAN_DELAY" ]]; then
    ARGUMENTS="$ARGUMENTS --scan-delay $SCAN_DELAY"
 fi
 
 if [[ -n "$DATABASE" ]]; then
    ARGUMENTS="$ARGUMENTS --db $DATABASE"
-fi
-
-if [[ -n "$FIXED_LOCATION" ]]; then
-   ARGUMENTS="$ARGUMENTS --fixed-location"
 fi
 
 # If the repo has already been created, pull the latest changes

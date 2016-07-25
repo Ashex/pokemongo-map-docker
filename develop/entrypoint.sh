@@ -26,20 +26,8 @@ do
 	  STEP_LIMIT="$2"
 	  shift 2
 	  ;;
-      -i | --ignore)
-	  IGNORE="$2"
-	  shift 2
-	  ;;
-      -o | --only)
-	  ONLY="$2"
-	  shift 2
-	  ;;
       -l | --locale)
 	  LOCALE="$2"
-	  shift 2
-	  ;;
-      -ar | --auto_refresh)
-	  AUTO_REFRESH="$2"
 	  shift 2
 	  ;;
       -k | --google-maps-key)
@@ -108,17 +96,6 @@ fi
 ARGUMENTS="--auth-service $AUTH_SERVICE --username $USERNAME --password $PASSWORD --st $STEP_LIMIT --locale $LOCALE"
 
 # Add optional arguments
-if [[ -n "$IGNORE" ]]; then
-   ARGUMENTS="$ARGUMENTS --ignore $IGNORE"
-fi
-
-if [[ -n "$ONLY" ]]; then
-   ARGUMENTS="$ARGUMENTS --only $ONLY"
-fi
-
-if [[ -n "$AUTO_REFRESH" ]]; then
-   ARGUMENTS="$ARGUMENTS --auto_refresh $AUTO_REFRESH"
-fi
 
 if [[ -n "$NO_POKESTOPS" ]]; then
    ARGUMENTS="$ARGUMENTS --no-pokestops"

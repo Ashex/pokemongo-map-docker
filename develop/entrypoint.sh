@@ -78,6 +78,12 @@ do
 	  FIXED_LOCATION="TRUE"
 	  shift 1
 	  ;;
+      -sd | --scan-delay)
+      SCAN_DELAY="$2"
+      ;;
+      -d | --db)
+      DATABASE="$2"
+      ;;
       -*)
 	  echo "Error: Unknown option: $1" >&2
 	  exit 1
@@ -140,6 +146,14 @@ fi
 
 if [[ -n "$FIXED_LOCATION" ]]; then
    ARGUMENTS="$ARGUMENTS --fixed-location"
+fi
+
+if [[ -n "$SCAN_DELAY" ]]; then
+   ARGUMENTS="$ARGUMENTS --scan-delay $SCAN_DELAY"
+fi
+
+if [[ -n "$DATABASE" ]]; then
+   ARGUMENTS="$ARGUMENTS --db $DATABASE"
 fi
 
 # If the repo has already been created, pull the latest changes

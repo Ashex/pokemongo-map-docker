@@ -68,9 +68,11 @@ do
 	  ;;
       -sd | --scan-delay)
       SCAN_DELAY="$2"
+      shift 2
       ;;
       -d | --db)
       DATABASE="$2"
+      shift 2
       ;;
       -*)
 	  echo "Error: Unknown option: $1" >&2

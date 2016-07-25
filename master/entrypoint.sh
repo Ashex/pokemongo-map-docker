@@ -66,6 +66,16 @@ do
 	  CORS="TRUE"
 	  shift 1
 	  ;;
+      -fl | --fixed-location)
+	  FIXED_LOCATION="TRUE"
+	  shift 1
+	  ;;
+      -sd | --scan-delay)
+      SCAN_DELAY="$2"
+      ;;
+      -d | --db)
+      DATABASE="$2"
+      ;;
       --) # End of all options
 	  shift
 	  break
@@ -124,6 +134,18 @@ fi
 
 if [[ -n "$CORS" ]]; then
    ARGUMENTS="$ARGUMENTS --cors"
+fi
+
+if [[ -n "$SCAN_DELAY" ]]; then
+   ARGUMENTS="$ARGUMENTS --scan-delay $SCAN_DELAY"
+fi
+
+if [[ -n "$DATABASE" ]]; then
+   ARGUMENTS="$ARGUMENTS --db $DATABASE"
+fi
+
+if [[ -n "$FIXED_LOCATION" ]]; then
+   ARGUMENTS="$ARGUMENTS --fixed-location"
 fi
 
 # If the repo has already been created, pull the latest changes

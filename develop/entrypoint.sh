@@ -144,6 +144,8 @@ fi
 # If the repo has already been created, pull the latest changes
 # Otherwise create and clone the repo
 if [ -d ".git" ]; then
+    #grunt modifies css files
+    git reset --hard origin/develop
     git pull origin develop
     pip install -r requirements.txt
     npm update

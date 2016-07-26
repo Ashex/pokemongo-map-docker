@@ -65,14 +65,14 @@ or
 
 ```bash
   docker run -d -P \
+    ashex/pokemongo-map \
     --name pokemongo-map \
     --auth-service ptc \
     --username UserName \
     --password Password \
     --location "Seattle, WA" \
     --step-limit "5" \
-    --google-maps-key "SUPERSECRET" \
-    ashex/pokemongo-map
+    --google-maps-key "SUPERSECRET"
 ```
 
 #### Develop branch
@@ -89,6 +89,20 @@ docker run -d -P \
    -e "POKEMON_STEP_LIMIT=5" \
    -e "POKEMON_GMAPS_KEY=SUPERSECRET" \
    ashex/pokemongo-map
+```
+
+or
+
+```bash
+  docker run -d -P \
+    ashex/pokemongo-map \
+    --name pokemongo-map \
+    --auth-service ptc \
+    --username UserName \
+    --password Password \
+    --location "Seattle, WA" \
+    --step-limit "5" \
+    --gmaps-key "SUPERSECRET"
 ```
 
 

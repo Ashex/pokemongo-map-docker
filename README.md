@@ -6,7 +6,7 @@ https://github.com/AHAAAAAAA/PokemonGo-Map
 
 ## Purpose:
 
-This will pull the latest code from the repository on start. Any restarts of the container will cause it to pull the latest changes. There are two images available for use:
+This will pull the latest code from the repository on start. Any restarts of the container will cause it to pull the latest changes. The following images available for use:
 
 * ashex/pokemongo-map:develop - Pulls the develop branch
 * ashex/pokemongo-map:master - Pulls from the master branch
@@ -14,7 +14,8 @@ This will pull the latest code from the repository on start. Any restarts of the
 
 For the latest *features* use the develop tag. 
 
-Currently the project isn't making tagged releases, rather merging to master. There will be a tagged image for each pseudo-release (most recent being 2.0), latest pointing to the most recent however they're still pushing small changes to master, as such master will sometimes have fixes missing from latest. 
+
+The project is making tagged releases (most recent being v2.0.0) however small changes continue to be merged into master . Because of this while latest is the most recent release sometimes master will have fixes missing from latest. 
 
 Latest is a built static image while master/develop are dynamic, pulling in changes from the repository.
 
@@ -22,6 +23,8 @@ Latest is a built static image while master/develop are dynamic, pulling in chan
 ## Usage:
 
 ### Passing settings
+
+#### Master branch
 
 You can either pass settings via arguments that the tool supports or with Environmental variables. Below is a list of avaialable settings and their variables:
 

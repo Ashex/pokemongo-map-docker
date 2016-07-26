@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
     Jinja2==2.8 \
     MarkupSafe==0.23 \
     Werkzeug==0.11.10 \
-    argparse==1.2.1 \
+    configargparse==0.10.0 \
     click==6.6 \
     itsdangerous==0.24 \
     peewee==2.8.1 \
@@ -33,12 +33,12 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
     gpsoauth==0.3.0 \
     protobuf-to-dict==0.1.0 \
     flask-cors==2.1.2 \
-    PyMySQL==0.7.5
+    PyMySQL==0.7.5 \
+    flask-compress==1.3.0
 
 WORKDIR /app
 
-
+ENTRYPOINT ["/bin/sh", "entrypoint.sh"]
 EXPOSE 5000
 COPY entrypoint.sh .
 
-ENTRYPOINT ["/bin/sh", "entrypoint.sh"]

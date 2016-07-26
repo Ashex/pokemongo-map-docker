@@ -12,15 +12,19 @@ create_config_ini ()
           POKEMON_* )
           #This was going to be a single sed but I couldn't figure out how to do lowercase conversion
         key_name=`echo "$VAR" | sed -e "s/^POKEMON_\(.*\)\=.*/\1/" -e 's/_/-/g' | tr '[:upper:]' '[:lower:]'` 
-        echo "Changing value of " $key_name
+        echo "Setting value of" $key_name
         key_value=`echo "$VAR" | sed -e "s/.*=\(.*\)/\1/"`
-        echo "$key_name": "$key_value" >> config/config.ini
+        echo "$key_name: $key_value" >> config/config.ini
         ;;
         esac
     done
 }
 
-create_config_ini
+# Generate config.ini on first run only
+if [ ! -d "config" ]; then
+    mkdir config
+    create_config_ini
+fi
 
 # If the repo has already been created, pull the latest changes
 # Otherwise create and clone the repo

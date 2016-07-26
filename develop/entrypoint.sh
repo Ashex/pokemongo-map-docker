@@ -31,7 +31,7 @@ if [ -d ".git" ]; then
     pip install -r requirements.txt
     npm update
     grunt jshint sass cssmin uglify
-    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --gmaps-key "$GMAPS_KEY"
+    python runserver.py --host 0.0.0.0
 
 else
     git init
@@ -40,7 +40,7 @@ else
     pip install -r requirements.txt
     npm install
     grunt jshint sass cssmin uglify
-    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --gmaps-key "$GMAPS_KEY"
+    python runserver.py --host 0.0.0.0
 fi
 
 

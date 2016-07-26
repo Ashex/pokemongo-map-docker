@@ -70,8 +70,24 @@ do
       SCAN_DELAY="$2"
       shift 2
       ;;
-      -d | --db)
-      DATABASE="$2"
+      --db-type)
+      DATABASE_TYPE="$2"
+      shift 2
+      ;;
+      --db-name)
+      DATABASE_NAME="$2"
+      shift 2
+      ;;
+      --db-user)
+      DATABASE_USER="$2"
+      shift 2
+      ;;
+      --db-pass)
+      DATABASE_PASS="$2"
+      shift 2
+      ;;
+      --db-host)
+      DATABASE_HOST="$2"
       shift 2
       ;;
       -*)
@@ -133,6 +149,26 @@ fi
 
 if [[ -n "$DATABASE" ]]; then
    ARGUMENTS="$ARGUMENTS --db $DATABASE"
+fi
+
+if [[ -n "$DATABASE_TYPE" ]]; then
+   ARGUMENTS="$ARGUMENTS --db-type $DATABASE_TYPE"
+fi
+
+if [[ -n "$DATABASE_NAME" ]]; then
+   ARGUMENTS="$ARGUMENTS --db-name $DATABASE_NAME"
+fi
+
+if [[ -n "$DATABASE_USER" ]]; then
+   ARGUMENTS="$ARGUMENTS --db-user $DATABASE_USER"
+fi
+
+if [[ -n "$DATABASE_PASS" ]]; then
+   ARGUMENTS="$ARGUMENTS --db-pass $DATABASE_PASS"
+fi
+
+if [[ -n "$DATABASE_HOST" ]]; then
+   ARGUMENTS="$ARGUMENTS --db-host $DATABASE_HOST"
 fi
 
 # If the repo has already been created, pull the latest changes

@@ -11,11 +11,11 @@ create_config_ini ()
       case "$VAR" in
           POKEMON_* )
           #This was going to be a single sed but I couldn't figure out how to do lowercase conversion
-        key_name=`echo "$VAR" | sed -e "s/^POKEMON_\(.*\)\=.*/\1/" -e 's/_/-/g' | tr '[:upper:]' '[:lower:]'` 
-        echo "Setting value of" $key_name
-        key_value=`echo "$VAR" | sed -e "s/.*=\(.*\)/\1/"`
-        echo "$key_name: $key_value" >> config/config.ini
-        ;;
+          key_name=`echo "$VAR" | sed -e "s/^POKEMON_\(.*\)\=.*/\1/" -e 's/_/-/g' | tr '[:upper:]' '[:lower:]'` 
+          echo "Setting value of" $key_name
+          key_value=`echo "$VAR" | sed -e "s/.*=\(.*\)/\1/"`
+          echo "$key_name: $key_value" >> config/config.ini
+          ;;
         esac
     done
 }
@@ -35,7 +35,7 @@ if [ -d ".git" ]; then
     pip install -r requirements.txt
     npm update
     grunt jshint sass cssmin uglify
-    python runserver.py --host 0.0.0.0
+    python runserver.py --host 0.0.0.0 "$@"
 
 else
     git init
@@ -44,7 +44,7 @@ else
     pip install -r requirements.txt
     npm install
     grunt jshint sass cssmin uglify
-    python runserver.py --host 0.0.0.0
+    python runserver.py --host 0.0.0.0 "$@"
 fi
 
 

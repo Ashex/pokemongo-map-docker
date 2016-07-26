@@ -49,7 +49,16 @@ This list contains all flags for both master and develop, make sure you're aware
 
 
 ### Example
-`docker run -d -P --name pokemongo-map ashex/pokemongo-map -a -e "AUTH_SERVICE=ptc" -e "USERNAME=UserName" -e "PASSWORD=Password" -E "LOCATION=Seattle, WA" -e "STEP_LIMIT=5" -e "GMAPS_KEY=SUPERSECRET"`
+```bash
+  docker run -d -P \
+    --name pokemongo-map ashex/pokemongo-map -a \
+    -e "AUTH_SERVICE=ptc" \
+    -e "USERNAME=UserName" \
+    -e "PASSWORD=Password" \
+    -e "LOCATION=Seattle, WA" \
+    -e "STEP_LIMIT=5" \
+    -e "GMAPS_KEY=SUPERSECRET"
+```
 
 
 

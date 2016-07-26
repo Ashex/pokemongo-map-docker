@@ -48,19 +48,47 @@ You can either pass settings via arguments that the tool supports or with Enviro
 | --scan-delay | SCAN_DELAY |
 | --db | DATABASE |
 
-This list contains all flags for both master and develop, make sure you're aware what flags are supported on branch (since develop tends to get new flags regularly) as the tool will fail to run if you add an unsupported flag.
 
-
-### Example
 ```bash
   docker run -d -P \
-    --name pokemongo-map ashex/pokemongo-map -a \
+    --name pokemongo-map \
     -e "AUTH_SERVICE=ptc" \
     -e "USERNAME=UserName" \
     -e "PASSWORD=Password" \
     -e "LOCATION=Seattle, WA" \
     -e "STEP_LIMIT=5" \
-    -e "GMAPS_KEY=SUPERSECRET"
+    -e "GMAPS_KEY=SUPERSECRET" \
+    ashex/pokemongo-map
+```
+
+or
+
+```bash
+  docker run -d -P \
+    --name pokemongo-map \
+    --auth-service ptc \
+    --username UserName \
+    --password Password \
+    --location "Seattle, WA" \
+    --step-limit "5" \
+    --google-maps-key "SUPERSECRET" \
+    ashex/pokemongo-map
+```
+
+#### Develop branch
+
+The project recently made the switch from `argparse` to `configargparse` which allows applying settings through a config.ini file. This removes the need to maintain a list of flags in the entrypoint script for handling variables. You can now pass settings with any argument the tool supports. If you prefer to use environment variables you need to prepend the variable with `POKEMON_`. For example: 
+
+```bash
+docker run -d -P \
+   --name pokemongo-map \
+   -e "POKEMON_AUTH_SERVICE=ptc" \
+   -e "POKEMON_USERNAME=UserName" \
+   -e "POKEMON_PASSWORD=Password" \
+   -e "POKEMON_LOCATION=Seattle, WA" \
+   -e "POKEMON_STEP_LIMIT=5" \
+   -e "POKEMON_GMAPS_KEY=SUPERSECRET" \
+   ashex/pokemongo-map
 ```
 
 

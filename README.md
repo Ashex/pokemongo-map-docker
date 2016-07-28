@@ -43,8 +43,8 @@ or
 
 ```bash
   docker run -d -P \
-    ashex/pokemongo-map:develop \
     --name pokemongo-map \
+    ashex/pokemongo-map:develop \
     --auth-service ptc \
     --username UserName \
     --password Password \

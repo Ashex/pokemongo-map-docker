@@ -24,7 +24,7 @@ Latest is a built static image while master/develop are dynamic, pulling in chan
 
 ### Passing settings
 
-#### Master branch
+#### Master branch (and latest)
 
 You can either pass settings via arguments that the tool supports or with Environmental variables. Below is a list of avaialable settings and their variables:
 
@@ -65,14 +65,14 @@ or
 
 ```bash
   docker run -d -P \
+    ashex/pokemongo-map \
     --name pokemongo-map \
     --auth-service ptc \
     --username UserName \
     --password Password \
     --location "Seattle, WA" \
     --step-limit "5" \
-    --google-maps-key "SUPERSECRET" \
-    ashex/pokemongo-map
+    --google-maps-key "SUPERSECRET"
 ```
 
 #### Develop branch
@@ -88,7 +88,21 @@ docker run -d -P \
    -e "POKEMON_LOCATION=Seattle, WA" \
    -e "POKEMON_STEP_LIMIT=5" \
    -e "POKEMON_GMAPS_KEY=SUPERSECRET" \
-   ashex/pokemongo-map
+   ashex/pokemongo-map:develop
+```
+
+or
+
+```bash
+  docker run -d -P \
+    ashex/pokemongo-map:develop \
+    --name pokemongo-map \
+    --auth-service ptc \
+    --username UserName \
+    --password Password \
+    --location "Seattle, WA" \
+    --step-limit "5" \
+    --gmaps-key "SUPERSECRET"
 ```
 
 

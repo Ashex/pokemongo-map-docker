@@ -45,6 +45,7 @@ else
     git pull origin develop
     pip install -r requirements.txt
     npm install
+    npm run-script build
     grunt jshint sass cssmin uglify
     python runserver.py --host 0.0.0.0 "$@"
 fi

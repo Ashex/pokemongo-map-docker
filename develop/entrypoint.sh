@@ -4,8 +4,7 @@
 # and create the config.ini with them
 create_config_ini () 
 {
-# Change the API keys in credentials.json 
-# If a variable with the value is provided
+
     IFS=$'\n'
     set -f
     for VAR in `env`

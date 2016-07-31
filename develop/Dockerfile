@@ -2,15 +2,12 @@
 # Usage:
 #   docker build -t pokemongo-map .
 #   docker run -d -P --name pokemongo-map pokemongo-map -a ptc -u UserName -p Password -l "Seattle, WA" -st 5
-FROM gliderlabs/alpine:3.4
+FROM python:2.7-alpine
 
 MAINTAINER Ahmed Osman (/u/Ashex)
 
 RUN apk add --update ca-certificates
 RUN apk add \
-    python \
-    python-dev \
-    py-pip \
     build-base \
     git \
     sed \
@@ -35,19 +32,23 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
     protobuf-to-dict==0.1.0 \
     flask-cors==2.1.2 \
     PyMySQL==0.7.5 \
-    flask-compress==1.3.0
+    flask-compress==1.3.0 \
+    LatLon==1.0.1
 
-WORKDIR /tmp
-RUN apk add --no-cache autoconf automake libtool \
-    && git clone --branch 3.3.6 https://github.com/sass/libsass \
-    && cd libsass \
-    && autoreconf --force --install \
-    && ./configure --disable-tests --enable-shared --prefix=/usr \
-    && cd .. \
-    && make -C libsass -j5 install \
-    && cd / \
-    && rm -rf /tmp/* \
-    && apk del automake libtool autoconf
+# Compile libsass to reduce size
+# Disabled as it adds a bit to the container but it does
+# Speed up start time
+#WORKDIR /tmp
+#RUN apk add --no-cache autoconf automake libtool \
+#    && git clone --branch 3.3.6 https://github.com/sass/libsass \
+#    && cd libsass \
+#    && autoreconf --force --install \
+#    && ./configure --disable-tests --enable-shared --prefix=/usr \
+#    && cd .. \
+#    && make -C libsass -j5 install \
+#    && cd / \
+#    && rm -rf /tmp/* \
+#    && apk del automake libtool autoconf
 
 WORKDIR /app
 

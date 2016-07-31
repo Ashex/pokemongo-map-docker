@@ -13,6 +13,7 @@ RUN apk add \
     py-pip \
     build-base \
     git \
+    sed \
     nodejs \
   && rm -rf /var/cache/apk/* \
   && npm install -g grunt
@@ -35,6 +36,18 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
     flask-cors==2.1.2 \
     PyMySQL==0.7.5 \
     flask-compress==1.3.0
+
+WORKDIR /tmp
+RUN apk add --no-cache autoconf automake libtool \
+    && git clone --branch 3.3.6 https://github.com/sass/libsass \
+    && cd libsass \
+    && autoreconf --force --install \
+    && ./configure --disable-tests --enable-shared --prefix=/usr \
+    && cd .. \
+    && make -C libsass -j5 install \
+    && cd / \
+    && rm -rf /tmp/* \
+    && apk del automake libtool autoconf
 
 WORKDIR /app
 

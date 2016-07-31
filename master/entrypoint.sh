@@ -2,7 +2,7 @@
 
 # Grab the variables starting with POKEMON_
 # and create the config.ini with them
-create_config_ini () 
+create_config_ini ()
 {
 
     IFS=$'\n'
@@ -11,10 +11,9 @@ create_config_ini ()
     do
       case "$VAR" in
           POKEMON_* )
-          #This was going to be a single sed but I couldn't figure out how to do lowercase conversion
-          key_name=`echo "$VAR" | sed -e "s/^POKEMON_\(.*\)\=.*/\1/" -e 's/_/-/g' | tr '[:upper:]' '[:lower:]'` 
+          key_name=`echo "$VAR" | sed -e "s/^POKEMON_\([^=]*\)=.*/\L\1/" -e 's/_/-/g'`
           echo "Setting value of" $key_name
-          key_value=`echo "$VAR" | sed -e "s/.*=\(.*\)/\1/"`
+          key_value=`echo "$VAR" | sed -e "s/[^=]*=\(.*\)/\1/"`
           echo "$key_name: $key_value" >> config/config.ini
           ;;
         esac

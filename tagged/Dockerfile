@@ -8,7 +8,7 @@ MAINTAINER Ahmed Osman (/u/Ashex)
 
 # default port the app runs on
 EXPOSE 5000
-
+STOPSIGNAL SIGINT
 # ca-certificates is needed because without it, pip fails to install packages due to a certificate failure
 # plus it's needed to communicate with niantic servers because SSL
 # build-base contains gcc, which is needed during the installation of the pycryptodomex pip package

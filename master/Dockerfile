@@ -51,7 +51,7 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
 
 WORKDIR /app
 
-
+STOPSIGNAL SIGINT
 EXPOSE 5000
 COPY entrypoint.sh .
 

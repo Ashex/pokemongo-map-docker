@@ -51,7 +51,7 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
 #    && apk del automake libtool autoconf
 
 WORKDIR /app
-
+STOPSIGNAL SIGINT
 ENTRYPOINT ["/bin/sh", "entrypoint.sh"]
 EXPOSE 5000
 COPY entrypoint.sh .

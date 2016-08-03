@@ -54,4 +54,18 @@ or
 ```
 
 
+### Multi-User threading
 
+The develop branch recently added support for multiple users by assining each thread a user to search with. You can accomplish it by passing them as arguments but the process is more elegant when using variables since it creates config.ini. The variables would simply contain a list that the configargparse library understands and would process natively. Below is an example of how the variables would be structured:
+
+```bash
+docker run -d -P \
+   --name pokemongo-map \
+   -e "POKEMON_AUTH_SERVICE=ptc" \
+   -e "POKEMON_USERNAME=[user1, user2]"
+   -e "POKEMON_PASSWORD=[password1, password]" \
+   -e "POKEMON_LOCATION=Seattle, WA" \
+   -e "POKEMON_STEP_LIMIT=5" \
+   -e "POKEMON_GMAPS_KEY=SUPERSECRET" \
+   ashex/pokemongo-map:develop
+```

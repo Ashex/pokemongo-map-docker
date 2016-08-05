@@ -135,7 +135,7 @@ if [[ -n "$CORS" ]]; then
 fi
 
 if [[ -n "$THREADS" ]]; then
-   ARGUMENTS="$ARGUMENTS --threads $THREADS"
+   ARGUMENTS="$ARGUMENTS --num-threads $THREADS"
 fi
 
 if [[ -n "$FIXED_LOCATION" ]]; then
@@ -149,7 +149,7 @@ if [ -d ".git" ]; then
     pip install -r requirements.txt
     npm update
     grunt jshint sass cssmin uglify
-    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --google-maps-key "$GMAPS_KEY"
+    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --gmaps-key "$GMAPS_KEY"
 
 else
     git init
@@ -158,7 +158,7 @@ else
     pip install -r requirements.txt
     npm install
     grunt jshint sass cssmin uglify
-    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --google-maps-key "$GMAPS_KEY"
+    python runserver.py --host 0.0.0.0 $ARGUMENTS --location "$LOCATION" --gmaps-key "$GMAPS_KEY"
 fi
 
 

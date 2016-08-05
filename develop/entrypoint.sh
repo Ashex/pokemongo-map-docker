@@ -7,15 +7,15 @@ while :
 do
     case "$1" in
       -a | --auth-service)
-	  AUTH_SERVICE="$2"  
+	  AUTH_SERVICE="$2"
 	  shift 2
 	  ;;
       -u | --username)
-	  USERNAME="$2"  
-	  shift 2
+	  USERNAME="$2"
+	  shift
 	  ;;
       -p | --password)
-	  PASSWORD="$2" 
+	  PASSWORD="$2"
 	  shift 2
 	  ;;
       -l | --location)
@@ -88,7 +88,7 @@ do
     esac
 done
 
-# Set defaults for unset arguments 
+# Set defaults for unset arguments
 if [[ -z "$LOCALE" ]]; then
    LOCALE="en"
  fi

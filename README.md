@@ -2,7 +2,9 @@
 
 Further details on PokemonGo-Map can be found here:
 
-https://github.com/AHAAAAAAA/PokemonGo-Map
+https://github.com/PokemonGoMap/PokemonGo-Map.git
+
+**latest builds are currently broken, try master or develop**
 
 ## Purpose:
 

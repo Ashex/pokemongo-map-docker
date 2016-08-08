@@ -34,11 +34,11 @@ RUN pip install --no-cache-dir Flask==0.11.1 \
     PyMySQL==0.7.5 \
     flask-compress==1.3.0 \
     LatLon==1.0.1 \
-    git+https://github.com/keyphact/pgoapi.git#egg=pgoapi
-    xxhash
-    sphinx==1.4.5
-    sphinx-autobuild==0.6.0
-    recommonmark==0.4.0
+    git+https://github.com/keyphact/pgoapi.git#egg=pgoapi \
+    xxhash \
+    sphinx==1.4.5 \
+    sphinx-autobuild==0.6.0 \
+    recommonmark==0.4.0 \
     sphinx_rtd_theme==0.1.9
 
 # Compile libsass to reduce size

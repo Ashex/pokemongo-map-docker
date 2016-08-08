@@ -12,7 +12,7 @@ STOPSIGNAL SIGINT
 # ca-certificates is needed because without it, pip fails to install packages due to a certificate failure
 # plus it's needed to communicate with niantic servers because SSL
 # build-base contains gcc, which is needed during the installation of the pycryptodomex pip package
-RUN apk --no-cache add ca-certificates build-base nodejs sed
+RUN apk --no-cache add ca-certificates build-base nodejs sed git
 
 WORKDIR /usr/src/app
 
@@ -30,7 +30,7 @@ RUN npm install -g grunt-cli \
     && npm uninstall -g grunt-cli \
     && rm -rf node_modules 
  
-RUN apk del build-base && rm -rf /tmp/*
+RUN apk del build-base git && rm -rf /tmp/*
 
 
 

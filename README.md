@@ -10,15 +10,12 @@ https://github.com/PokemonGoMap/PokemonGo-Map.git
 This will pull the latest code from the repository on start. Any restarts of the container will cause it to pull the latest changes. The following images available for use:
 
 * ashex/pokemongo-map:develop - Pulls the develop branch
-* ashex/pokemongo-map:master - Pulls from the master branch
 * ashex/pokemongo-map:latest - Most recent release
 
 For the latest *features* use the develop tag. 
 
 
-The project is making tagged releases (most recent being v2.2.0) however small changes continue to be merged into master . Because of this while latest is the most recent release sometimes master will have fixes missing from latest. 
-
-Latest is a built static image while master/develop are dynamic, pulling in changes from the repository.
+Latest is a built static image while develop are dynamic, pulling in changes from the repository.
 
 
 ## Usage:

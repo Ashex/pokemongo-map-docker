@@ -4,7 +4,7 @@
 #   docker run -d -P --name pokemongo-map pokemongo-map -a ptc -u UserName -p Password -l "Seattle, WA" -st 10 --google-maps-key CHECKTHEWIKI
 FROM python:2.7-alpine
 
-MAINTAINER Ahmed Osman (/u/Ashex)
+MAINTAINER Evelyn Osman (/u/Ashex)
 
 # default port the app runs on
 EXPOSE 5000

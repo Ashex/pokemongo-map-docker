@@ -4,7 +4,7 @@
 #   docker run -d -P --name pokemongo-map pokemongo-map -a ptc -u UserName -p Password -l "Seattle, WA" -st 5
 FROM python:2.7-alpine
 
-MAINTAINER Ahmed Osman (/u/Ashex)
+MAINTAINER Evelyn Osman (/u/Ashex)
 
 RUN apk add --update ca-certificates
 RUN apk add \
